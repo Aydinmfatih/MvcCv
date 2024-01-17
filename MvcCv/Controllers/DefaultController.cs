@@ -44,7 +44,7 @@ namespace MvcCv.Controllers
             var values = db.TblCertificate.ToList();
             return PartialView(values);
         }
-
+        [HttpGet]
         public PartialViewResult PartialContact()
         {
           
@@ -53,6 +53,7 @@ namespace MvcCv.Controllers
         [HttpPost]
         public PartialViewResult PartialContact(TblContact contact)
         {
+            contact.Date = DateTime.Now;
             db.TblContact.Add(contact);
             db.SaveChanges();
             return PartialView();
